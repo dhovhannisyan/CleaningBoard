@@ -1,0 +1,42 @@
+<%= form_with(model: cleaner, local: true) do |form| %>
+  <% if cleaner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cleaner.errors.count, "error") %> prohibited this cleaner from being saved:</h2>
+
+      <ul>
+      <% cleaner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fname %>
+    <%= form.text_field :fname, id: :cleaner_fname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lname %>
+    <%= form.text_field :lname, id: :cleaner_lname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :cleaner_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password, id: :cleaner_password %>
+  </div>
+
+   
+
+ 
+ <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @cleaner.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @cleaner.lname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @cleaner.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @cleaner.password %>
+</p>
+
+
+  <% @cleaner.cities.each do |city|%> 
+    <p>city: <%= city.name %></p>
+  <% end %>
+
+<%= link_to 'Edit', edit_cleaner_path(@cleaner) %> |
+<%= link_to 'Back', cleaners_path %>
