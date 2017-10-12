@@ -1,7 +1,6 @@
 <h1 style="margin-bottom: 40px">Booking</h1>
 
-    
-      <div style="color: <%= @notice[:color] %>; font-size: 17px"> 
+     <div style="color: <%= @notice[:color] %>; font-size: 17px"> 
         <% case @notice[:status] %>
           <% when :fill_in, :saved %>
             <%= @notice[:msg] %>
@@ -12,8 +11,6 @@
         <% end %>
       </div><br>
     
-  
-  
     <%= form_tag '/bookings' do %> 
       <lable style="color: blue; margin-right: 15px; display: inline-block; font-size: 17px"> Check Cleaner: </lable>
       <%= select_tag "cleaner", options_for_select(@options) %><br><br>
