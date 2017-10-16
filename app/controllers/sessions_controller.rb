@@ -5,17 +5,22 @@ class SessionsController < ApplicationController
   end
 
   def create
-    
     client = Client.find_by_email(params[:email])
     if client
-      client_id = client.id
-      session[:client_id] = client_id
-      redirect_to bookings_path
+      if client.password == params[:password]
+        self.log_in(client) 
+      else
+        @notice = 'invalid password'
+        render :new
+      end
     else
-      @notice = 'undefined client with mail "#{params[:email]}"'
+      @notice = 'invalid email'
       render :new
     end
-    
+  end
+
+  def destroy 
+    log_out
   end
 
 end

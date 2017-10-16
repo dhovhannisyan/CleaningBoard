@@ -1,15 +1,17 @@
-<h1>Login</h1><br>
+<div style="border-bottom: 1px solid black; display: inline-block">
+   <h1 style="margin-bottom: 10px" >Login</h1> 
+</div><br><br>
 
 <% if @notice %>
 
-  <div style="color: red; font-size: 17px"><%= @notice %></div>
+  <div style="color: red; font-size: 17px"><%= @notice %></div><br>
   
 <% end %>
 
 <%= form_tag '/login' do %> 
-   <lable style="color: blue; margin-right: 45px; display: inline-block; font-size: 17px"> Email: </lable>
-    <%= text_field_tag 'email' %><br><br>
-    <lable style="color: blue; margin-right: 12px; display: inline-block; font-size: 17px"> Password: </lable>
-    <%= text_field_tag 'password' %><br><br>
-    <%= submit_tag 'login' %>
+   <lable style="color: #555; margin-right: 35px; display: inline-block; font-size: 17px"> Email: </lable>
+    <%= text_field_tag 'email', params[:email] %><br><br>
+    <lable style="color: #555; margin-right: 12px; display: inline-block; font-size: 17px"> Password: </lable>
+    <%= text_field_tag 'password', params[:password] %><br><br>
+    <%= submit_tag 'login', class: 'big' %>
 <% end %><br>
