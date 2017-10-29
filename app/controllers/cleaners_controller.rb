@@ -1,85 +1,53 @@
 class CleanersController < ApplicationController
 
-  before_action :set_cleaner, only: [:show, :edit, :update, :destroy]
-  
-  # GET /cleaners
-  # GET /cleaners.json
+  before_action :set_cleaner, only: [:show, :edit, :update, :destroy, :page, :bookings]
+  #before_action :params_hash, only: [:update]
 
-  def index
-    @cleaners = Cleaner.all
-  end
-
-  # GET /cleaners/1
-  # GET /cleaners/1.json
-
-  def show
-
-  #  params[:cities].each do |city_id| 
-  #    @cleaner.cities << City.find_by_id(city_id.to_i)
-  #  end 
-   
-    
-  end
-
-  # GET /cleaners/new
-  def new
-    @cleaner = Cleaner.new
-    @cities = City.all
-    
-  end
-
-  # GET /cleaners/1/edit
   def edit
+    @path = cleaner_edit_path
+    @cities = City.all
   end
 
-  # POST /cleaners
-  # POST /cleaners.json
-  def create
-    @cleaner = Cleaner.new(cleaner_params)
-
-    respond_to do |format|
-      if @cleaner.save
-        format.html { redirect_to @cleaner, notice: 'Cleaner was successfully created.' }
-        format.json { render :show, status: :created, location: @cleaner }
-      else
-        format.html { render :new }
-        format.json { render json: @cleaner.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /cleaners/1
-  # PATCH/PUT /cleaners/1.json
   def update
-    respond_to do |format|
-      if @cleaner.update(cleaner_params)
-        format.html { redirect_to @cleaner, notice: 'Cleaner was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cleaner }
-      else
-        format.html { render :edit }
-        format.json { render json: @cleaner.errors, status: :unprocessable_entity }
-      end
+    if @cleaner.update(params_hash)
+      redirect_to cleaner_page_path
+    else
+      @notice = @client.errors.full_messages
+      render :edit 
     end
   end
 
-  # DELETE /cleaners/1
-  # DELETE /cleaners/1.json
   def destroy
     @cleaner.destroy
-    respond_to do |format|
-      format.html { redirect_to cleaners_url, notice: 'Cleaner was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to logout_cleaner_path
+  end
+
+  def page
+    @bookings = @cleaner.bookings
+  end
+
+  def bookings
+    @bookings = @cleaner.bookings
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cleaner
-      @cleaner = Cleaner.find(params[:id])
-    end
+  
+  def set_cleaner
+    @cleaner = Cleaner.find_by_id(session[:cleaner_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cleaner_params
-      params.require(:cleaner).permit(:fname, :lname, :email, :password)
-    end
+  def cleaner_params
+    params[:user[:password]] = Digest::MD5.hexdigest(params[:user[:password]])
+    params.require(:user).permit(:fname, :lname, :email, :password)
+  end
+
+  def params_hash
+    p_hash = {}
+    p_hash[:fname] = params[:user][:fname] unless params[:user][:fname].empty?
+    p_hash[:lname] = params[:user][:lname] unless params[:user][:lname].empty?
+    p_hash[:email] = params[:user][:email] unless params[:user][:email].empty?
+    p_hash[:password] = params[:user][:password] unless params[:user][:password].empty?
+    p_hash
+  end
+
 end

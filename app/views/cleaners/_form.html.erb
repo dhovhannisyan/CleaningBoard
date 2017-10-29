@@ -1,42 +1,28 @@
-<%= form_with(model: cleaner, local: true) do |form| %>
-  <% if cleaner.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cleaner.errors.count, "error") %> prohibited this cleaner from being saved:</h2>
 
-      <ul>
-      <% cleaner.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<div>
+  <% if @notice %>
+    <% @notice.each do |error| %> 
+      <p style="color: red"><%= error %></p>
+    <% end %>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname, id: :cleaner_fname %>
-  </div>
+<%= form_tag @path,  {method: :post} do %>
 
-  <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname, id: :cleaner_lname %>
-  </div>
+  <%= label_tag :Fname %>
+  <%= text_field_tag 'user[fname]' %><br><br>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :cleaner_email %>
-  </div>
+  <%= label_tag :Lname %>
+  <%= text_field_tag 'user[lname]' %><br><br>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password, id: :cleaner_password %>
-  </div>
+  <%= label_tag :Email %>
+  <%= text_field_tag 'user[email]' %><br><br>
 
-   
+  <%= label_tag :Password %>
+  <%= text_field_tag 'user[password]', nil,  type: :password %><br><br>
+  
 
- 
- <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <%= submit_tag :Edit %><br>
 
+<% end %> 
 

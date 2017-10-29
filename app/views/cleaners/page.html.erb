@@ -1,0 +1,16 @@
+
+<h1>Cleaner: <%= @cleaner.fname + " " + @cleaner.lname%></h1>
+
+<%= link_to "logout", logout_cleaner_path, class: :m %> 
+
+<%= link_to "my bookings", cleaner_bookings_path, method: :get, class: :m %> 
+
+<%=  link_to "edit", cleaner_edit_path, method: :get, class: :m  %> 
+
+<%=  link_to "destroy", cleaner_delete_path, method: :delete, class: :m %>
+
+
+	
+
+
+

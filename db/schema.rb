@@ -15,15 +15,20 @@ ActiveRecord::Schema.define(version: 20171010101541) do
   create_table "bookings", force: :cascade do |t|
     t.integer "cleaner_id"
     t.integer "client_id"
+    t.integer "city_id"
     t.date "date"
+    t.string "time"
+    t.boolean "read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_bookings_on_city_id"
     t.index ["cleaner_id"], name: "index_bookings_on_cleaner_id"
     t.index ["client_id"], name: "index_bookings_on_client_id"
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.boolean "read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,7 +36,7 @@ ActiveRecord::Schema.define(version: 20171010101541) do
   create_table "cities_cleaners", force: :cascade do |t|
     t.integer "city_id"
     t.integer "cleaner_id"
-    t.index ["city_id", nil], name: "index_cities_cleaners_on_city_id_and_cleanr_id", unique: true
+    t.index ["city_id", nil], name: "index_cities_cleaners_on_city_id_and_cleanr_id"
     t.index ["city_id"], name: "index_cities_cleaners_on_city_id"
     t.index ["cleaner_id"], name: "index_cities_cleaners_on_cleaner_id"
   end

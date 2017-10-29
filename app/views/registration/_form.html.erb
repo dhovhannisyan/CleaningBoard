@@ -1,9 +1,8 @@
 
-
 <div>
   <% if @notice %>
     <% @notice.each do |error| %> 
-      <p style="color: red"><%= error %></p>
+      <%= error %>
     <% end %>
   <% end %>
 </div>
@@ -22,6 +21,14 @@
   <%= label_tag :Password %>
   <%= text_field_tag 'user[password]', nil,  type: :password %><br><br>
 
-  <%= submit_tag :Edit %><br>
+  <% if @cleaner %>
+    <h2>Activity</h2>
+    <% @cities.each do |city| %>
+      <%= label_tag city.name, nil, class: :line %>
+      <%= check_box_tag 'city_ids[]', city.id %><br><br>
+    <% end %>
+  <% end %>
+
+  <%= submit_tag :Registration %><br>
 
 <% end %> 

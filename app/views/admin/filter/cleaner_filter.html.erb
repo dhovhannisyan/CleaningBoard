@@ -1,0 +1,41 @@
+
+<h1>Cleaner Filter</h1>
+
+<div style="font-size: 17px">Filter by:</div><br>
+
+<%= form_tag  admin_filter_cleaner_path do %>
+  <%= label_tag :Fname %>
+  <%= text_field_tag 'cleaner[fname]' %><br><br>
+
+  <%= label_tag :Lname %>
+  <%= text_field_tag 'cleaner[lname]' %><br><br>
+
+  <%= label_tag :Fmail %>
+  <%= text_field_tag 'cleaner[email]' %><br><br>
+
+  <%= submit_tag :Filter %>
+<% end %>
+
+<% if @cleaners %>
+  <p style="font-size: 16px">Finds Cleaners</p>
+  <% if @cleaners.empty? %>
+    <p style="color: red">not results</p>
+  <% else %>
+   	<table>
+    	<tr>
+	    	<th>Fname</th>
+	    	<th>Lname</th>
+		  	<th>Email</th>
+   	  </tr>
+  		<% @cleaners.each do |cleaner|%>
+	    	<tr>
+      		<td><%= cleaner.fname %></td>
+      		<td><%= cleaner.lname %></td>
+      		<td><%= cleaner.email %></td>
+    		</tr>
+    	<% end %>
+		</table>
+	<% end %>
+<% end %>
+
+

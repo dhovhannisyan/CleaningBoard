@@ -1,0 +1,19 @@
+
+<h1>My Bookings</h1>
+
+<% if @bookings.empty? %>
+  <p style="color: red">no bookings</p>
+<% else %>
+  <div style="font-size: 15px">
+    <% @bookings.each_with_index do |book, i| %>
+	    <%= link_to book.time, "/cleaner/booking/#{book.id}", method: :post, class: :m %>
+		  <% unless book.read %>
+			  <span class="lab">new</span><br><br>
+		  <% else %>
+		    <br><br>
+		  <% end %>
+    <% end %> 
+  </div>
+<% end %>
+
+<%= link_to "Back", cleaner_page_path %>

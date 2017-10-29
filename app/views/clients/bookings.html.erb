@@ -1,0 +1,19 @@
+<h1>Client Bookings</h1>
+
+<% if @bookings.empty? %>
+  <p style="color: red"> no bookings </p>
+<% else %>
+  <div style="font-size: 15px">
+	<% @bookings.each_with_index do |book, i| %>
+	  <p><%= i + 1 %></p>
+	  <p>
+      Cleaner Fname: <%= book.cleaner.fname %><br>
+      Cleaner Lname: <%= book.cleaner.lname %><br>
+      Date: <%= book.date_to_s %><br>
+      Time: <%= book.time %>
+      </p>
+    <% end %> 
+  </div>
+<% end %>
+
+<%= link_to "Back", client_page_path %>

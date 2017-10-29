@@ -1,0 +1,41 @@
+<h1>Client Filter</h1>
+
+<div style="font-size: 17px">Filter by:</div><br>
+
+<%= form_tag  admin_filter_client_path do %>
+  <%= label_tag :Fname %>
+  <%= text_field_tag 'client[fname]' %><br><br>
+
+  <%= label_tag :Lname %>
+  <%= text_field_tag 'client[lname]' %><br><br>
+
+  <%= label_tag :Email %>
+  <%= text_field_tag 'client[email]' %><br><br>
+
+  <%= submit_tag :Filter %>
+<% end %><br><br>
+
+<% if @clients %>
+  <p style="font-size: 16px">Finds Clients</p>
+  <% if @clients.empty? %>
+    <p style="color: red">not results</p>
+  <% else %>
+    <table>
+  		<tr>
+	  	  <th>Fname</th>
+				<th>Lname</th>
+				<th>Email</th>
+  		</tr>
+  		<% @clients.each do |client|%>
+	  		<tr>
+      		<td><%= client.fname %></td>
+      		<td><%= client.lname %></td>
+      		<td><%= client.email %></td>
+    		</tr>
+  		<% end %>
+  	</table>
+	<% end %>
+<% end %>
+
+
+

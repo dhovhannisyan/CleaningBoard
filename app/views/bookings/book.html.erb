@@ -1,29 +1,15 @@
 <h1 style="margin-bottom: 40px">Booking</h1>
 
-     <div style="color: <%= @notice[:color] %>; font-size: 17px"> 
-        <% case @notice[:status] %>
-          <% when :fill_in, :saved %>
-            <%= @notice[:msg] %>
-          <% when :no_saved %>
-            <% @notice[:msg].each do |m| %>
-              <%= m %>
-            <% end %>
-        <% end %>
-      </div><br>
     
-    <%= form_tag '/bookings' do %> 
-      <lable style="color: blue; margin-right: 15px; display: inline-block; font-size: 17px"> Check Cleaner: </lable>
-      <%= select_tag "cleaner", options_for_select(@options) %><br><br>
-      <lable style="color: blue; margin-right: 35px; display: inline-block; font-size: 17px"> Your Email: </lable>
-      <%= text_field_tag 'email' %><br><br>
-      <lable style="color: blue; margin-right: 10px; display: inline-block; font-size: 17px"> Booking Date: </lable>
-      <%= text_field_tag 'date' %><br><br>
-      <%= submit_tag 'order' %>
+    <%= form_tag client_booking_check_cleaner_path, method: :post do %> 
+      <%= label_tag 'Check city', nil, class: :line %>
+      <%= select_tag 'city', options_for_select(@options) %> <br><br>
+      <%= label_tag 'Input date' %>
+      <%= text_field_tag 'date' %><br><br> 
+      <%= submit_tag 'Check Cleaner' %>
     <% end %><br>
-
-  
     
-  <%= link_to 'Bookings List', bookings_list_path %>
+    <%= link_to 'Back', client_page_path %>
     
     
   

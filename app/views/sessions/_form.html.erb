@@ -1,0 +1,19 @@
+
+
+<% if @notice %>
+
+  <div style="color: red; font-size: 17px"><%= @notice %></div><br>
+  
+<% end %>
+
+<%= form_tag @path, method: :post do %>
+
+  <%= label_tag :Email %>
+  <%= text_field_tag 'email' %><br><br>
+
+  <%= label_tag :Password %>
+  <%= text_field_tag 'password', nil, type: :password %><br><br>
+
+  <%= submit_tag 'login' %>
+
+<% end %><br>

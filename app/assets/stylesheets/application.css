@@ -33,7 +33,7 @@ body {
 a {
 
    font-size: 18px 
-
+   
    }
 
 .link {
@@ -47,8 +47,8 @@ a {
 a:hover {
 
          color: red !important;
-         background: white !important
-
+         background: #ccc
+         
          }
 
 .wrong {
@@ -56,4 +56,35 @@ a:hover {
         border-color: red
 
        }
+
+.line {
+
+  display: inline;
+ 
+}
+
+.m {
+     
+  margin-right: 30px;
+  text-decoration: none;
+
+}
+
+.lab {
+
+  color: red; 
+  border: 1px solid black; 
+  background: #ccc;
+  border-radius: 2px; 
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 16px
+
+}
+
+table, th, td {
+
+  border: 1px solid black
+
+}
 

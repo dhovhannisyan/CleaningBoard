@@ -7,6 +7,5 @@ class CreateClients < ActiveRecord::Migration[5.1]
       t.string :password, null: false, default: ''
       t.timestamps null: false
     end
-    add_column :clients, :login, :string
   end
 end

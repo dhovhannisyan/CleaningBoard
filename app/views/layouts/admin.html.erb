@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CleaningBoard</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div style="background: #ccc;  padding: 10px">
+      <span style="font-size: 22px; margin-right: 25px">ADMIN</span>
+      <%= link_to 'logout', home_path, class: :panel %>
+    </div>
+    <%= yield %>
+
+  </body>
+</html>
