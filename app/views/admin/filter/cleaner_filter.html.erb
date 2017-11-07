@@ -10,10 +10,18 @@
   <%= label_tag :Lname %>
   <%= text_field_tag 'cleaner[lname]' %><br><br>
 
-  <%= label_tag :Fmail %>
+  <%= label_tag :Email %>
   <%= text_field_tag 'cleaner[email]' %><br><br>
 
-  <%= submit_tag :Filter %>
+  <%= label_tag 'Booking Date' %>
+  <%= text_field_tag 'booking_date' %><br><br>
+
+  <% @cities.each do |city| %>
+    <%= label_tag city.name, nil %>
+    <%= check_box_tag 'city_ids[]', city.id %>
+  <% end %>
+
+  <div style="margin-top: 15px"><%= submit_tag :Filter %></div>
 <% end %>
 
 <% if @cleaners %>

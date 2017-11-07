@@ -1,19 +1,26 @@
 
 
-<% if @notice %>
 
-  <div style="color: red; font-size: 17px"><%= @notice %></div><br>
+<%= form_tag @path do %>
+  
+    <h1 ><%= @form_title %></h1>
+    <%= label_tag 'Email:' %>
+    <%= text_field_tag 'email' %>
+
+    <%= label_tag 'Password:' %>
+    <%= text_field_tag 'password', nil, type: :password %>
+
+    <%= submit_tag 'Login', class: :btn %>
+
+    <% if @notice %>
+
+  <div class="err">
+    <%= "#{@notice}" %> 
+  </div><br>
+  
+<% end %> 
+
   
 <% end %>
 
-<%= form_tag @path, method: :post do %>
 
-  <%= label_tag :Email %>
-  <%= text_field_tag 'email' %><br><br>
-
-  <%= label_tag :Password %>
-  <%= text_field_tag 'password', nil, type: :password %><br><br>
-
-  <%= submit_tag 'login' %>
-
-<% end %><br>

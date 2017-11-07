@@ -1,8 +1,9 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy, :cleaners]
+  before_action :authorize
 
   # GET /cities
-  # GET /cities.json
+  # GET /cities.json 
 
   def index
     @cities = City.all

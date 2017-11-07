@@ -1,0 +1,22 @@
+
+
+
+
+
+<%= form_tag cleaner_edit_city_path do %>
+    <h2 style="margin-bottom: 15px; margin-top: 0">Edit Cities</h2>
+    <% @cities.each do |city| %>
+      
+      <%= label_tag city.name, nil, class: :line %>
+       <% if @old_cities.include? city.id %>
+         <%= check_box_tag 'city_ids[]', city.id, :cecked %>
+       <% else %>
+         <%= check_box_tag 'city_ids[]', city.id%>
+       <% end %>
+      
+    <% end %>
+
+   <br><br> <%= submit_tag :Edit %>
+<% end %>
+
+

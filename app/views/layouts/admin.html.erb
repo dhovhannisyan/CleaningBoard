@@ -2,18 +2,18 @@
 <html>
   <head>
     <title>CleaningBoard</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
-  <body>
+  <body style="padding-left: 50px; padding-right: 50px">
     <div style="background: #ccc;  padding: 10px">
       <span style="font-size: 22px; margin-right: 25px">ADMIN</span>
-      <%= link_to 'logout', home_path, class: :panel %>
-    </div>
+        <%=  link_to("back", request.referer, class: :link) %>     </div>
     <%= yield %>
-
   </body>
-</html>
+</html> 

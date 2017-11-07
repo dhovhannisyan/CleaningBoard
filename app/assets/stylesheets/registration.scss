@@ -1,3 +1,91 @@
-// Place all the styles related to the Registration controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*
+*=require 'menu.css'
+*/
+
+body {
+
+  background: #333;
+  margin: 0;
+
+}
+
+.container {
+
+  margin: 50px 335px 0 335px;
+  
+}
+
+form {
+
+  padding: 30px 180px;
+  background: #777;
+  display: inline-block;
+  font-size: 22px;
+  border-radius: 6px;
+  margin-bottom: 50px;
+}
+
+label {
+
+  
+  color: #ddd;
+  display: block;
+}
+
+form .btn {
+
+  display: block;
+  color: #666;
+ 
+}
+
+
+h1 {
+
+  margin: 0 0 30px 0;
+  font-size: 40px;
+  color: #ddd;
+
+}
+
+input {
+
+  margin: 0 0 25px 0;
+  font-size: 20px;
+
+}
+
+.err {
+
+   background: #fff; 
+   color: red; 
+   padding: 4px 10px; 
+   display: inline-block;
+   margin-bottom: 20px;
+   font-size: 18px;
+
+}
+
+.checkbox {
+
+  display: inline-block;
+  margin-right: 20px;
+
+}
+
+h2 {
+
+  margin: 0 0 20px 0;
+  color: #ddd;
+
+}
+
+.lab {
+
+	display: inline-block;
+}
+
+
+
+

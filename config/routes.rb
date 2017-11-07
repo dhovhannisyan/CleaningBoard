@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  #resources :clients
-  #resources :cleaners
-  #resources :cities
-  #match '/bookings', to: "bookings#book", via: [:get, :post]
-  #match '/bookings/list', to: "bookings#list", via: [:get, :post]
-
   # Home
   get '/home', to: 'home#welcome'
 
@@ -46,6 +40,7 @@ Rails.application.routes.draw do
   #Cleaner Edit
   get '/client/edit', to: 'clients#edit'
   post '/client/edit', to: 'clients#update'
+  
   # Client Booking
   get '/client/booking', to: 'bookings#book'
   post '/client/booking/check_cleaner', to: 'bookings#check_cleaner'
@@ -58,6 +53,18 @@ Rails.application.routes.draw do
   
   #Client Bookings
   get 'client/bookings', to: 'clients#bookings'
-    
+
+  #Cleaner edit password
+  get 'cleaner/edit/password', to: 'cleaners#edit_password'
+  post 'cleaner/edit/password', to: 'cleaners#change_password'
+
+  #Client edit password
+  get 'client/edit/password', to: 'clients#edit_password'
+  post 'client/edit/password', to: 'clients#change_password'
+
+  #Cleaner edit city
+  match 'cleaner/edit/city', to: 'cleaners#edit_city', via: [:get, :post]
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
 end

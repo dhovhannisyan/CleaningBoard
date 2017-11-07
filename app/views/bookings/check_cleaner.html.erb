@@ -1,13 +1,18 @@
-<h1>Check Cleaner</h1>
 
-<% if @notice %>
-  <p style="color: red; font-size: 15px"><%= @notice %></p>
-<% else %>
-  <%= form_tag client_booking_path do %>
-    <%= label_tag 'Check Cleaner' %>
-    <%= select_tag 'cleaner_id', options_for_select(@options) %>
+
+
+
+  <%= form_tag client_booking_path, method: :post do %>
+
+    <% if @notice %>
+      <div class="err">
+        <%= @notice %>
+      </div>
+    <% end %>
+  <h2>Check Cleaner</h2>
+    
+    <%= select_tag 'cleaner_id', options_for_select(@options), class: :sel %>
 	<%= submit_tag :Order %>
-  <% end %>
+  
 <% end %>
 
-<br><%= link_to "Back", client_booking_path %>

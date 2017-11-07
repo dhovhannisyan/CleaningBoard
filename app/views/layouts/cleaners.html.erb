@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>Cleaning Board</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div class="menu">
+      <div class="title">
+        <span class="sp">Cleaning Board</span>
+      </div>
+      <div class="side">
+
+        <%=  link_to "main page", cleaner_page_path, class: :link %>  
+
+        <%= link_to "my bookings", cleaner_bookings_path, method: :get, class: :link %> 
+
+        <%=  link_to "edit", cleaner_edit_path, method: :get, class: :link %> 
+
+        <%=  link_to "destroy", cleaner_delete_path, method: :delete, data: {confirm: 'are you want delete your profile?'}, class: :link %> 
+        
+        <%= link_to "logout", logout_cleaner_path, class: :link %>
+        
+        <%=  link_to "back", request.referer, class: :link %> 
+
+      </div>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+
+    </div>
+
+  </body>
+
+  
+</html>

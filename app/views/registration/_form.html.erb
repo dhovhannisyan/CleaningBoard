@@ -1,34 +1,40 @@
 
-<div>
+
+  
+
+
+<%= form_tag @path do %>
+
   <% if @notice %>
-    <% @notice.each do |error| %> 
-      <%= error %>
-    <% end %>
+    <div class="err">
+      <% @notice.each do |error| %> 
+        <%= ". #{error}"%><br>
+      <% end %>
+    </div>
   <% end %>
-</div>
 
-<%= form_tag @path,  {method: :post} do %>
+ <h1> <%= @form_title %></h1>
+ 
+  <%= label_tag 'Fname:' %>
+  <%= text_field_tag 'user[fname]' %>
 
-  <%= label_tag :Fname %>
-  <%= text_field_tag 'user[fname]' %><br><br>
+  <%= label_tag 'Lname:' %>
+  <%= text_field_tag 'user[lname]' %>
 
-  <%= label_tag :Lname %>
-  <%= text_field_tag 'user[lname]' %><br><br>
+  <%= label_tag 'Email:' %>
+  <%= text_field_tag 'user[email]' %>
 
-  <%= label_tag :Email %>
-  <%= text_field_tag 'user[email]' %><br><br>
-
-  <%= label_tag :Password %>
-  <%= text_field_tag 'user[password]', nil,  type: :password %><br><br>
-
+  <%= label_tag 'Password:' %>
+  <%= text_field_tag 'user[password]', nil,  type: :password %>
+  
   <% if @cleaner %>
-    <h2>Activity</h2>
+    <h2>check cities</h2>
     <% @cities.each do |city| %>
-      <%= label_tag city.name, nil, class: :line %>
-      <%= check_box_tag 'city_ids[]', city.id %><br><br>
+      <%= label_tag city.name, nil, class: :lab %>
+      <%= check_box_tag 'city_ids[]', city.id , nil, class: :checkbox%>
     <% end %>
   <% end %>
 
-  <%= submit_tag :Registration %><br>
+  <%= submit_tag :Registration, class: :btn %>
 
 <% end %> 

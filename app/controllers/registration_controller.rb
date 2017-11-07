@@ -1,14 +1,20 @@
 class RegistrationController < ApplicationController
 
+ 
+
 	def for_client
 	  @client = Client.new
 	  @path = registration_client_path
+    
+    @form_title = 'SignUp Client'
 	end
 
 	def for_cleaner
     @cleaner = Cleaner.new
     @cities = City.all
     @path = registration_cleaner_path
+    
+    @form_title = 'SignUp Cleaner'
   end
 
   def create_cleaner
@@ -20,10 +26,11 @@ class RegistrationController < ApplicationController
       end
       redirect_to login_cleaner_path
     else
-      @notice = @cleaner.errors.full_massages
+      @notice = @cleaner.errors.full_messages
       @cities = City.all
+      @form_title = 'Regstration Cleaner'
       render 'for_cleaner'
-    end
+    end 
   end
 
   def create_client
@@ -31,12 +38,13 @@ class RegistrationController < ApplicationController
     if @client.save
       redirect_to login_client_path
     else
+      @notice = @client.errors.full_messages
+      @form_title = 'Regstration Client'
       render 'for_client'
     end
   end   
 
   def user_params
-    params[:user][:password] = to_hex(params[:user][:password])
     params.require(:user).permit(:fname, :lname, :email, :password)
   end
 	  

@@ -1,16 +1,28 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>CleaningBoard</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+ 
   <body>
 
-    <%= yield %>
+    <div class="menu">
+      <div class="title">
+        <span class="sp">Cleaning Board</span>
+      </div>
+      <div class="side">
+        <%=  link_to("back", request.referer, class: :link) %> 
+      </div>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
 
   </body>
+
+
 </html>

@@ -1,27 +1,33 @@
 
 
-<div>
+
+<%= form_tag client_edit_path do %>
+
+  <h2>Edit Client</h2>
+
+  <%= label_tag 'Fname:' %>
+  
+  <%= text_field_tag 'user[fname]' %>
+
+  <%= label_tag 'Lname:' %>
+  <%= text_field_tag 'user[lname]' %>
+
+  <%= label_tag 'Email:' %>
+
+  <%= text_field_tag 'user[email]' %>
+
+
+  <%= submit_tag :Edit, class: :btn%> 
+
   <% if @notice %>
-    <% @notice.each do |error| %> 
-      <p style="color: red"><%= error %></p>
-    <% end %>
+    <div class="err">
+      <% @notice.each do |error| %> 
+        <%= ". #{error}" %><br>  
+      <% end %>
+    </div>
   <% end %>
-</div>
 
-<%= form_tag @path,  {method: :post} do %>
+  <%= link_to 'edit password', client_edit_password_path, class: :simple_link %>
 
-  <%= label_tag :Fname %>
-  <%= text_field_tag 'user[fname]' %><br><br>
-
-  <%= label_tag :Lname %>
-  <%= text_field_tag 'user[lname]' %><br><br>
-
-  <%= label_tag :Email %>
-  <%= text_field_tag 'user[email]' %><br><br>
-
-  <%= label_tag :Password %>
-  <%= text_field_tag 'user[password]', nil,  type: :password %><br><br>
-
-  <%= submit_tag :Edit %><br>
 
 <% end %> 

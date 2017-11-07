@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cleaning Board</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'clients', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+ 
+  <body>
+      <div class="menu_panel">
+      <div class="logo">
+        <span>Cleaning Board</span>
+      </div>
+      <div class="menu"> 
+        <%= link_to "my page", client_page_path, class: :link %> 
+
+        <%= link_to "booking", client_booking_path, class: :link %>
+
+        <%=  link_to "my bookings", client_bookings_path, method: :get, class: :link %>
+
+        <%=  link_to "edit", client_edit_path, class: :link %> 
+
+        <%=  link_to "destroy", client_delete_path, method: :delete, data: {confirm: 'are you want delete your profile?'}, class: :link %>
+
+        <%= link_to "logout", logout_client_path, class: :link, data: {confirm: 'Do you want to get out?'} %>
+        
+        <%=  link_to "back", request.referer, class: :link %> 
+
+
+      </div>
+    </div>
+
+    <div class="container">
+        <!-- <div style="color: #ddd; font-size: 18px"><%= request.referer %></div> -->
+
+      <%= yield %>
+    </div>
+    
+
+  </body>
+
+
+</html>

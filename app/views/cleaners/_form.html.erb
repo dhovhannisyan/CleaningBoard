@@ -1,28 +1,34 @@
-
-<div>
-  <% if @notice %>
+<% if @notice %>
+  <div class="err" >
     <% @notice.each do |error| %> 
-      <p style="color: red"><%= error %></p>
+       <%= ". #{error}" %><br>
     <% end %>
+  </div><br>
   <% end %>
-</div>
 
 <%= form_tag @path,  {method: :post} do %>
-
-  <%= label_tag :Fname %>
-  <%= text_field_tag 'user[fname]' %><br><br>
-
-  <%= label_tag :Lname %>
-  <%= text_field_tag 'user[lname]' %><br><br>
-
-  <%= label_tag :Email %>
-  <%= text_field_tag 'user[email]' %><br><br>
-
-  <%= label_tag :Password %>
-  <%= text_field_tag 'user[password]', nil,  type: :password %><br><br>
   
 
-  <%= submit_tag :Edit %><br>
+  <h2 style="margin-bottom: 15px; margin-top: 0">Edit Cleaner</h2>
 
-<% end %> 
+  <%= label_tag 'Fname:' %><br>
+  <%= text_field_tag 'user[fname]' %><br><br>
+
+  <%= label_tag 'Lname:' %><br>
+  <%= text_field_tag 'user[lname]' %><br><br>
+
+  <%= label_tag 'Email:' %><br>
+  <%= text_field_tag 'user[email]' %> 
+
+  <br><br><%= submit_tag :Edit %><br><br>
+
+  <%= link_to '. edit password', cleaner_edit_password_path, class: :simple_link %><br>
+
+  <%= link_to '. edit cities', cleaner_edit_city_path, class: :simple_link %>
+
+<% end %>  
+
+
+
+
 

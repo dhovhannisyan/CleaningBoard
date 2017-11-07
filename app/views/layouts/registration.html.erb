@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CleaningBoard</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'registration', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+ 
+  <body>
+  
+    <div class="menu_panel">
+      <div class="logo">
+        <span>Cleaning Board</span>
+      </div>
+      <div class="menu"> 
+        <%= link_to 'login client', login_client_path, class: :link %> 
+        <%= link_to 'login cleaner', login_cleaner_path, class: :link %> 
+        <%= link_to 'registration client', registration_client_path, class: :link %>
+        <%= link_to 'registration cleaner', registration_cleaner_path, class: :link %>   
+        <%=  link_to("back", request.referer, class: :link) %>       </div>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+    
+  </body>
+
+
+</html>

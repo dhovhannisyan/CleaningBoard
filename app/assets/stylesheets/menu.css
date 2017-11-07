@@ -1,0 +1,56 @@
+
+.menu_panel {
+
+  background: #ddd; 
+  height: 45px;
+  padding: 0 0 4px 0
+  
+}
+
+.logo {
+
+  background: #333;
+  height: 45px;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: left;
+  margin-right: 10px
+  
+}
+
+.logo span {
+   
+  font-size: 25px; 
+  margin-top: 10px;
+  display: inline-block;
+  color: #bbb;
+
+}
+
+.menu {
+
+  background: #333;
+  height: 45px;
+  
+}
+
+
+.menu a:hover {
+
+  background: #333;
+  color: #eee;
+
+}
+
+.menu a {
+
+  text-decoration: none;
+  font-size: 18px;
+  display: inline-block;
+  margin-right:  50px;
+  margin-left: 50px;
+  margin-top: 15px;
+  color: #bbb
+
+}
+

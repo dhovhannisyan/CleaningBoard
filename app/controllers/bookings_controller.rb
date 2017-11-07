@@ -1,15 +1,28 @@
 class BookingsController < ApplicationController
 
+  before_action :authorize
+  
+
   def book 
     @options = City.all.map { |city| [city.name, city.id] }
+    puts '#' * 100
+    # puts p request
+    puts '#' * 100
   end
 
   def check_cleaner
-    
-    session[:date] = params[:date]
-    session[:city_id] = params[:city]
 
+    if /[0-9][0-9]\.[0-9][0-9]\.201[0-9]/ =~ params[:date]
+      session[:date] = params[:date]
+      session[:city_id] = params[:city] 
+    else
+      @notice = ['invalid data format!', 'exemple of format "01.01.2017"']
+      @options = City.all.map { |city| [city.name, city.id] }
+      render 'book.html.erb'
+    end
     
+
+     
     cleaners = City.find_by_id(params[:city].to_i).cleaners 
 
     valid_cleaners = []
@@ -47,7 +60,7 @@ class BookingsController < ApplicationController
     session[:date] = nil
     session[:city_id] = nil
     if booking.save
-      redirect_to client_page_path 
+      redirect_to client_bookings_path 
     end
   end
 
